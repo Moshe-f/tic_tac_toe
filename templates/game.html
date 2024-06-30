@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- <h1 class="headline">Tic-Tac-Toe</h1> -->
+
+<h2 class="turn" id="turn">{{ turn }} turn</h2>
+
+<div class="main-container">
+
+  <div class="tic">
+    <div class="sings">
+      <b class="fs-3" id="sing-1">X</b>
+      <b class="fs-3" id="sing-2">O</b>
+    </div>
+    <div class="players">
+      <div class="player-1" id="player-1">
+        {% if users_names[0] != "Unregistered_players" %}
+        <a class="link-light link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover"
+          href="{{ url_for('user', id=game_users[0]) }}">{{ users_names[0] }}</a>
+        {% else %}
+        {{ users_names[0] }}
+        {% endif %}
+      </div>
+
+      <div class="player-2" id="player-2">
+        {% if users_names[1] != "Unregistered_players" %}
+        <a class="link-light link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover"
+          href="{{ url_for('user', id=game_users[1]) }}">{{ users_names[1] }}</a>
+        {% else %}
+        {{ users_names[1] }}
+        {% endif %}
+      </div>
+    </div>
+    <button class="button btn btn-outline-info" id="button0" value="0"></button>
+    <button class="button btn btn-outline-info" id="button1" value="1"></button>
+    <button class="button btn btn-outline-info" id="button2" value="2"></button>
+    <button class="button btn btn-outline-info" id="button3" value="3"></button>
+    <button class="button btn btn-outline-info" id="button4" value="4"></button>
+    <button class="button btn btn-outline-info" id="button5" value="5"></button>
+    <button class="button btn btn-outline-info" id="button6" value="6"></button>
+    <button class="button btn btn-outline-info" id="button7" value="7"></button>
+    <button class="button btn btn-outline-info" id="button8" value="8"></button>
+    <button class="button btn btn-outline-info restart" id="restart" value="restart">restart</button>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/game-script.js')}}"></script>
+
+  {% endblock %}

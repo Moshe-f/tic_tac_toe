@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Users List</h1>
+<br>
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Wins</th>
+            <th scope="col">Looses</th>
+            <th scope="col">Draws</th>
+        </tr>
+        <tr>
+            
+          </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row" colspan="5"></th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            {% if user.username != "DRAW" and user.username != "Unregistered_players" %}
+            <th scope="row">{{ user.id }}</th>
+            <td><a class="link-light link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover"
+                    href="{{ url_for('user', id=user.id) }}">{{ user.username }}</a></td>
+            <td>{{ user.score[0] }}</td>
+            <td>{{ user.score[1] }}</td>
+            <td>{{ user.score[2] }}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

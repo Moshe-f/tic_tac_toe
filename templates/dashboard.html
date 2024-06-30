@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<br>
+
+<div class="card">
+  <div class="card-header">
+    {{ current_user.username }}
+  </div>
+  <div class="card-body">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <p class="card-text"><b>UserName:</b> <a class="link-light link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover"
+            href="{{ url_for('user', id=current_user.id) }}">{{ current_user.username}}</a><br>
+            <b>User Id:</b> {{ current_user.id}}<br>
+            <b>Date Joined:</b> {{ current_user.date_added}}<br>
+            <b>Wins/Looses/Draws:</b> {{ current_user.score}}<br>
+            <b>About Player:</b> {{ current_user.about_player}}<br>
+          </p>
+          <a class="btn btn-secondary" href="{{ url_for('user', id=current_user.id) }}">Show Games</a><br><br>
+          <a class="btn btn-warning btn-sm" href="{{ url_for('logout')}}">Logout</a>
+          <a class="btn btn-secondary btn-sm" href="{{ url_for('update_user', id=current_user.id) }}">Update Password</a>
+
+          <a class="btn btn-danger btn-sm" href="{{ url_for('delete_user', id=current_user.id) }}">Delete User</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+<div class="card">
+  <div class="card-header">
+    Update Profile
+  </div>
+  <div class="card-body">
+    <form action="{{ url_for('dashboard') }}" method="POST" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+
+      {{ form.username.label(class="form-label") }}
+      {{ form.username(class="form-control", value=user_to_update.username) }}
+      <br>
+      {{ form.about_player.label(class="form-label") }}
+      {{ form.about_player(class="form-control", value=user_to_update.about_player) }}
+      <br>
+      {{ form.submit(class="btn btn-secondary") }}
+    </form>
+  </div>
+</div>
+
+<br>
+
+{% endblock %}

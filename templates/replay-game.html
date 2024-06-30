@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if game.winning.username == "DRAW" %}
+<h1 class="headline">DRAW</h1>
+{% elif game.winning.username == "Unregistered_players" %}
+<h1 class="headline">'Unregistered players' WIN!</h1>
+{% else %}
+<h1 class="headline"><a class="link-light link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover"
+    href="{{ url_for('user', id=game.winning.id) }}">'{{ game.winning.username }}'</a> WIN!</h1>
+{% endif %}
+
+
+<div class="main-container">
+
+
+    <div class="tic">
+        <div class="sings">
+            <b class="fs-3" id="sing-1">X</b>
+            <b class="fs-3" id="sing-2">O</b>
+          </div>
+          <div class="players">
+            <div class="player-1" id="player-1">
+              {% if game.player[0].player.username != "Unregistered_players" %}
+              <a class="link-light link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover"
+                href="{{ url_for('user', id=game.player[0].player.id) }}">{{ game.player[0].player.username }}</a>
+              {% else %}
+              {{ game.player[0].player.username }}
+              {% endif %}
+            </div>
+      
+            <div class="player-2" id="player-2">
+              {% if game.player[1].player.username != "Unregistered_players" %}
+              <a class="link-light link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover"
+                href="{{ url_for('user', id=game.player[1].player.id) }}">{{ game.player[1].player.username }}</a>
+              {% else %}
+              {{ game.player[1].player.username }}
+              {% endif %}
+            </div>
+          </div>
+        <button class="button btn btn-outline-info" id="button0" value="0" disabled></button>
+        <button class="button btn btn-outline-info" id="button1" value="1" disabled></button>
+        <button class="button btn btn-outline-info" id="button2" value="2" disabled></button>
+        <button class="button btn btn-outline-info" id="button3" value="3" disabled></button>
+        <button class="button btn btn-outline-info" id="button4" value="4" disabled></button>
+        <button class="button btn btn-outline-info" id="button5" value="5" disabled></button>
+        <button class="button btn btn-outline-info" id="button6" value="6" disabled></button>
+        <button class="button btn btn-outline-info" id="button7" value="7" disabled></button>
+        <button class="button btn btn-outline-info" id="button8" value="8" disabled></button>
+    <a class="btn btn-info" style="grid-column: span 3; margin-top: 20px;" href="{{ url_for('users') }}">Back to users list</a>
+    </div>
+
+    <script>
+        const id = "{{ game.id }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/replay-script.js')}}"></script>
+
+
+    {% endblock %}

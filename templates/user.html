@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>About {{ user.username }}</h2>
+
+<br>
+
+<div class="card">
+  <div class="card-header">
+    {{ user.username }}
+  </div>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <p class="card-text">
+            <b>Username:</b> {{ user.username}}<br>
+            <b>User Id:</b> {{ user.id}}<br>
+            <b>Date Joined:</b> {{ user.date_added}}<br>
+            <b>Wins/Looses/Draws:</b> {{ user.score }}<br>
+            <b>About Player:</b> {{ user.about_player}}<br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="card">
+  <div class="card-header">
+    {{ user.username }} Games
+  </div>
+  <div class="card-body">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Players</th>
+          <th scope="col">Winner</th>
+          <th scope="col">Date</th>
+          <th scope="col">View Game</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" colspan="5"></th>
+        </tr>
+        {% for game in user.played %}
+
+        <tr>
+          <th scope="row">
+            <h4><a href="{{ url_for('replay_game', id=game.game_id) }}"
+                class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{
+                game.game_id }}</a></h4>
+          </th>
+          <td>
+            <p>
+              {% if game.game.player[0].player.username != "Unregistered_players" %}
+              <a class="link-light link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover"
+                href="{{ url_for('user', id=game.game.player[0].player.id) }}">{{ game.game.player[0].player.username }}</a>
+              {% else %}
+              {{ game.game.player[0].player.username }}
+              {% endif %}
+              -&&-
+              {% if game.game.player[1].player.username != "Unregistered_players" %}
+              <a class="link-light link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover"
+                href="{{ url_for('user', id=game.game.player[1].player.id) }}">{{ game.game.player[1].player.username}}</a>
+              {% else %}
+              {{ game.game.player[1].player.username }}
+              {% endif %}
+            </p>
+          </td>
+          <td>
+            {% if game.game.winning.username != "DRAW" and game.game.winning.username != "Unregistered_players" %}
+            <a class="link-light link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover"
+              href="{{ url_for('user', id=game.game.winning.id) }}">{{ game.game.winning.username }}</a>
+            {% else %}
+            {{ game.game.winning.username }}
+            {% endif %}
+          </td>
+          <td>
+            <p>{{ game.game.date_played }}</p>
+          </td>
+          <td><a href="{{ url_for('replay_game', id=game.game_id) }}" class="btn btn-outline-light btn-sm">View Game</a></td>
+
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<br>
+{% endblock %}
