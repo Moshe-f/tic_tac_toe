@@ -1,10 +1,10 @@
 # Create Database for tic tac toe app.
 
-import os
+# import os
 import secrets
 import string
 
-import psycopg2
+# import psycopg2
 from werkzeug.security import generate_password_hash
 
 from app import app, db, Users
@@ -23,14 +23,17 @@ def generate_password() -> str:
 
 
 # init database
-POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
-conn = psycopg2.connect(database="postgres",
-                         user="postgres", 
-                         password=POSTGRES_PASSWORD)
-conn.autocommit = True
-curs = conn.cursor()
-curs.execute("""CREATE database tic_tac_toe""")
-conn.close()
+# POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
+# conn = psycopg2.connect(database="postgres",
+#                          user="postgres", 
+#                          password=POSTGRES_PASSWORD)
+# conn.autocommit = True
+# curs = conn.cursor()
+# curs.execute("""CREATE database tic_tac_toe""")
+# conn.close()
+
+
+# CREATE all tables and columns
 app.app_context().push()
 db.create_all()
 

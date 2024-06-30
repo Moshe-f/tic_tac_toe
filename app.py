@@ -18,8 +18,8 @@ from flask_login import UserMixin
 from web_forms_tic_tac_toe import UserForm, LoginForm
 
 
-POSTGRES_PASSWORD: str = os.getenv(
-    "POSTGRES_PASSWORD")  # Password for postgres
+POSTGRES_URL: str = os.getenv(
+    "TIC_TAC_TOE_POSTGRES_URL")  # Url for postgres db
 TIC_TAC_TOE_SECRET_KEY: str = os.getenv(
     "TIC_TAC_TOE_SECRET_KEY")  # Secret key for Tic tac toe
 
@@ -27,7 +27,7 @@ TIC_TAC_TOE_SECRET_KEY: str = os.getenv(
 app = Flask(__name__)
 app.config["SECRET_KEY"] = TIC_TAC_TOE_SECRET_KEY  # Tic tac toe secret key
 
-app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql+psycopg2://postgres:{POSTGRES_PASSWORD}@localhost/tic_tac_toe"
+app.config["SQLALCHEMY_DATABASE_URI"] = POSTGRES_URL  # Postgres bd url
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
