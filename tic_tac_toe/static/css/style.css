@@ -1,0 +1,79 @@
+html body {
+    background-color: #282b2f;
+}
+
+body p, body h1,  body h2,  body h3,  body h4,  body h5,  body h6,  body a, body label {
+    color: #f4f4f4;
+}
+
+body .navbar {
+    background-color: #087990;
+}
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.headline {
+    font-size: 45px;
+    margin-top: 20px;
+    justify-self: center;
+    text-align: center;
+    color: #f4f4f4;
+}
+
+.turn {
+    font-size: 40px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    justify-self: center;
+    text-align: center;
+    color: #f4f4f4;
+}
+
+.tic {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+    grid-column: 2;
+    align-self: center;
+    justify-self: center;
+}
+
+.players, .sings {
+    display: flex;
+    grid-column: span 3;
+    justify-content: space-between;
+}
+
+.players {
+    margin-bottom: 5px;
+}
+
+.tic .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 90px;
+    font-weight: 700;
+    width: 120px;
+    height: 120px;
+    border-radius: 0%;
+    border-width: 3px;
+}
+
+.tic .button:disabled {
+    opacity: unset;
+}
+
+.tic .restart {
+    width: 300px;
+    margin-top: 40px;
+    justify-self: center;
+    grid-column: span 3;
+    height: 90px;
+    font-size: 70px;
+    font-weight: 500;
+    border-radius: 60px;
+}

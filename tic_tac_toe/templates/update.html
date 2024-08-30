@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if current_user.id == user_to_update.id %}
+<h1>Update User Password:</h1>
+<br>
+<div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+    <form action="{{ url_for('update_user', id=user_to_update.id) }}" method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        {{ form.old_password.label(class="form-label") }}
+        {{ form.old_password(class="form-control") }}
+        <br>
+        {{ form.password_hash.label(class="form-label") }}
+        {{ form.password_hash(class="form-control") }}
+        <br>
+        {{ form.password_hash2.label(class="form-label") }}
+        {{ form.password_hash2(class="form-control") }}
+        <br>
+        {{ form.submit(class="btn btn-secondary") }}
+
+    </form>
+</div>
+
+{% else %}
+<h1>Access Denied!</h1>
+<h3>Sorry, You cannot access this user profile...</h3>
+
+{% endif %}
+<br>
+<a class="btn btn-secondary" href="{{ url_for('dashboard') }}">Back To The Dashboard</a>
+
+{% endblock %}

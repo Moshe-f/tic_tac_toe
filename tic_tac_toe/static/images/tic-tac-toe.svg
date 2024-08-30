@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="122.371 95.603 73.614 99.426" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="159.656" y1="100.382" x2="159.656" y2="192.16" id="gradient-0" spreadMethod="pad">
+      <stop offset="0" style="stop-color: rgb(0% 0% 0%)"/>
+      <stop offset="1" style="stop-color: rgb(0% 0% 0%)"/>
+    </linearGradient>
+  </defs>
+  <rect x="127.151" y="100.382" width="65.01" height="91.778" style="fill: url('#gradient-0'); paint-order: fill; stroke: rgb(255, 255, 255);" rx="3.824" ry="3.824"/>
+  <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 28px; letter-spacing: 1.4px; paint-order: stroke; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 1; stroke-width: 2px; white-space: pre;"><tspan x="134.799" y="129.063" dx="0 3.824 4.78">Tic</tspan><tspan x="134.799" dy="1em">​</tspan><tspan dx="0 2.868 0.956">Tac</tspan><tspan x="134.799" dy="1em">​</tspan><tspan dx="0 2.868 0.956" dy="0 -2.868">Toe</tspan></text>
+</svg>

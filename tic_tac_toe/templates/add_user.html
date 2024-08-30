@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Register User:</h1>
+<br>
+<div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+    <form action="{{ url_for('add_user') }}" method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.username.label(class="form-label") }}
+        {{ form.username(class="form-control") }}
+        <br>
+        {{ form.about_player.label(class="form-label") }}
+        {{ form.about_player(class="form-control") }}
+        <br>
+        {{ form.password_hash.label(class="form-label") }}
+        {{ form.password_hash(class="form-control") }}
+        <br>
+
+
+
+        {% for error in form.password_hash.errors %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ error }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+
+
+        
+        {{ form.password_hash2.label(class="form-label") }}
+        {{ form.password_hash2(class="form-control") }}
+        <br>
+        {{ form.submit(class="btn btn-secondary") }}
+    </form>
+</div>
+<br>
+<a class="btn btn-secondary" href="{{ url_for('users') }}">To Users List</a>
+
+{% endblock %}

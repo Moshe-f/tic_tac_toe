@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg h3">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('home') }}"><img width="40" height="40"
+                src="{{ url_for('static', filename='images/tic-tac-toe.svg') }}" alt="Tic tac toe icon."></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{{ url_for('home') }}">Two players</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mx-3" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Against computer
+                    </a>
+                    <ul class="dropdown-menu gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px">
+                        <li><a class="dropdown-item" href="/against_computer/easy">easy</a></li>
+                        <li><a class="dropdown-item" href="/against_computer/medium">medium</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/against_computer/impossible">impossible</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3" aria-current="page" href="{{ url_for('users') }}">Players List</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0 btn btn-dark rounded-5">
+                <li class="nav-item dropstart">
+                    <a class="nav-link dropdown-toggle mx-3" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Profile
+                    </a>
+                    <ul class="dropdown-menu gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px">
+                        {% if current_user.is_authenticated %}
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('user', id=current_user.id) }}">Show Games</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('dashboard') }}">Dashboard</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('login') }}">Login</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('add_user') }}">Register</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
