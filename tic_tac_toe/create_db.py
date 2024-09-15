@@ -7,7 +7,10 @@ import string
 import psycopg2
 from werkzeug.security import generate_password_hash
 
-from app import app, db, Users
+try:
+    from app import app, db, Users
+except ModuleNotFoundError:
+    from tic_tac_toe.app import app, db, Users
 
 
 def generate_password() -> str:

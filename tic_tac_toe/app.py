@@ -15,7 +15,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, LoginManager, login_required, logout_user, current_user
 from flask_login import UserMixin
 
-from web_forms_tic_tac_toe import UserForm, LoginForm
+try:
+    from web_forms_tic_tac_toe import UserForm, LoginForm
+except ModuleNotFoundError:
+    from tic_tac_toe.web_forms_tic_tac_toe import UserForm, LoginForm
 
 
 # Url for postgres db / TESTING environment
