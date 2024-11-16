@@ -23,7 +23,7 @@ except ModuleNotFoundError:
 
 # Url for postgres db / TESTING environment
 POSTGRES_URL: str | None = os.getenv(
-    "TIC_TAC_TOE_POSTGRES_URL")
+    "TIC_TAC_TOE_POSTGRES_URL")  # Change to DB URL / Environment variable
 if POSTGRES_URL is None:
     test_postgres_password = os.getenv("POSTGRES_PASSWORD")
     POSTGRES_URL = f"postgresql+psycopg2://postgres:{test_postgres_password}@localhost/tic_tac_toe_testing"
